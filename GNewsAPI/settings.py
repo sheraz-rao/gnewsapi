@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'news',
 ]
 
 MIDDLEWARE = [
@@ -133,4 +134,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-GNEWS_API_KEY = "65891ae45340d27b5cfc66b65abecbe8"
+GNEWS_API_KEY = "" #Enter your api key here
