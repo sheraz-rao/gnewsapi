@@ -84,7 +84,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://redis:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
         },
@@ -134,4 +134,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-GNEWS_API_KEY = "" #Enter your api key here
+GNEWS_API_KEY = "dca25b3376d9ccf73960a0124ab888cd" #Enter your api key here
+GNEWS_API = "https://gnews.io/api/v4/"
