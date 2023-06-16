@@ -103,6 +103,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.dev
 .venv
 env/
 venv/
@@ -130,3 +131,6 @@ dmypy.json
 
 testing.ipynb
 sample.json
+
+/static/
+/staticfiles
