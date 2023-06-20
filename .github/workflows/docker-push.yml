@@ -32,6 +32,7 @@ jobs:
           chmod 400 server.pem
           ls
           pwd
+          cat server.pem
 
       - name: connect to EC2
         run: |
