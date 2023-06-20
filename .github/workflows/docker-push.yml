@@ -32,7 +32,10 @@ jobs:
         #   USER_NAME: ${{secrets.USER_NAME}}
 
         # run: echo "$PRIVATE_KEY" > server.pem
-        run: echo "$EC2_SSH" > private_key && chmod 600 private_key && openssl rsa -in private_key -noout -text
+        run: |
+          echo "$EC2_SSH" > private_key
+          chmod 600 private_key 
+          openssl rsa -in private_key -noout -text
 
       - name: connect to EC2
         run: |
