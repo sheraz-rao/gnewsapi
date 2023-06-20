@@ -40,5 +40,5 @@ jobs:
 
       - name: connect to EC2
         run: |
-          ssh -T -o StrictHostKeyChecking=no -i /home/runner/work/gnewsapi/gnewsapi/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
+          ssh -T -i /home/runner/work/gnewsapi/gnewsapi/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
 
