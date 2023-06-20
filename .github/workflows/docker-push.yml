@@ -37,7 +37,7 @@ jobs:
           ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} << 'EOF'
           cd /home/ubuntu/gnewsapi
           git checkout main
-          docker-compose up --build
+          sudo docker-compose up --build
           EOF
 
 
