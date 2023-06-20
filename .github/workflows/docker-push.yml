@@ -7,7 +7,7 @@ on:
     branches: ['main']
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +24,11 @@ jobs:
 
       - name: Docker Push
         run: docker push ${{ secrets.DOCKER_USERNAME }}/gnewsapi
+      
+      - name: Create PEM file from secret
+        run: echo "$EC2_SSH" > server.pem
+
+      - name: connect to EC2
+        run: |
+          sudo chmod 400 server.pem && cat server.pem
+          ssh -T -o StrictHostKeyChecking=no -i server.pem ubuntu@ec2-13-51-109-60.eu-north-1.compute.amazonaws.com
