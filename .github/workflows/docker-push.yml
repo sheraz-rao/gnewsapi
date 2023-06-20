@@ -34,12 +34,12 @@ jobs:
         # run: echo "$PRIVATE_KEY" > server.pem
         run: |
           echo "$EC2_SSH" > server.pem
-          chmod 600 server.pem
+          chmod 400 server.pem
           ls
           pwd
-          openssl rsa -in server.pem -noout -text
+          openssl rsa -in /home/runner/work/gnewsapi/gnewsapi/server.pem -noout -text
 
       - name: connect to EC2
         run: |
-          ssh -T -o StrictHostKeyChecking=no -i server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
+          ssh -T -o StrictHostKeyChecking=no -i /home/runner/work/gnewsapi/gnewsapi/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
 
