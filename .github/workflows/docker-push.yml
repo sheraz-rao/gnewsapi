@@ -32,9 +32,8 @@ jobs:
           USER_NAME: ${{secrets.USER_NAME}}
 
         # run: echo "$EC2_SSH" > server.pem
-        run: echo "$PRIVATE_KEY" > private_key
+        run: echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
 
       - name: connect to EC2
         run: |
-          sudo chmod 600 private_key
           ssh -T -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
