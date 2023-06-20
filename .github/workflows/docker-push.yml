@@ -36,5 +36,7 @@ jobs:
       - name: connect to EC2
         run: |
           ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
-          
+          ls
+          pwd
+
 
