@@ -36,4 +36,4 @@ jobs:
 
       - name: connect to EC2
         run: |
-          ssh -T -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME}
+          ssh -T -o -v StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME}
