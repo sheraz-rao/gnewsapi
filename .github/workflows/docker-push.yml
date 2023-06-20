@@ -26,15 +26,20 @@ jobs:
       #   run: docker push ${{ secrets.DOCKER_USERNAME }}/gnewsapi
       
       - name: Create PEM file from secret
+      # - run: mkdir -p ~/.ssh/
+      # - run: echo "{{ secrets.STAGING_KEY }}" > ~/.ssh/private.key
+      # - run: chmod 600 ~/.ssh/private.key
+      # - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" ${{ secrets.STAGING_USER }}@${{ secrets.STAGING_HOST }} -p ${{ secrets.STAGING_PORT }} whoami
+
 
         run: |
-          echo "$EC2_SSH" > server.pem
-          chmod 400 server.pem
-          ls
-          pwd
-          cat server.pem
+          sudo apt-get update
+          mkdir -p ~/.ssh/
+          echo "${{secrets.EC2_SSH}}" > ~/.ssh/server.pem
+          chmod 400 ~/.ssh/server.pem
+          cat ~/.ssh/server.pem
 
       - name: connect to EC2
         run: |
-          ssh -T -o StrictHostKeyChecking=no -i /home/runner/work/gnewsapi/gnewsapi/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
+          ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
 
