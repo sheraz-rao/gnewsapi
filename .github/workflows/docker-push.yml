@@ -28,17 +28,16 @@ jobs:
       - name: Create PEM file from secret
 
         run: |
-          
           mkdir -p ~/.ssh/
           echo "${{secrets.EC2_SSH}}" > ~/.ssh/server.pem
           chmod 400 ~/.ssh/server.pem
 
       - name: connect to EC2
         run: |
-          ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
-          sudo apt-get update
-          ls
-          pwd
+          ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} << 'EOF'
+          cd /home/ubuntu/gnewsapi
+          git checkout main
           docker-compose up --build
+          EOF
 
 
