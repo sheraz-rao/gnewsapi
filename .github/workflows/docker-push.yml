@@ -37,7 +37,6 @@ jobs:
           chmod 400 server.pem
           ls
           pwd
-          openssl ec -in /home/runner/work/gnewsapi/gnewsapi/server.pem -noout -text
 
       - name: connect to EC2
         run: |
