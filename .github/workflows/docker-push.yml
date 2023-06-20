@@ -33,11 +33,13 @@ jobs:
 
         # run: echo "$PRIVATE_KEY" > server.pem
         run: |
-          echo "$EC2_SSH" > private_key.pem
-          chmod 600 private_key.pem 
-          openssl rsa -in private_key.pem -noout -text
+          echo "$EC2_SSH" > server.pem
+          chmod 600 server.pem
+          ls
+          pwd
+          openssl rsa -in server.pem -noout -text
 
       - name: connect to EC2
         run: |
-          ssh -T -o StrictHostKeyChecking=no -i private_key.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
+          ssh -T -o StrictHostKeyChecking=no -i server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
 
