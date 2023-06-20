@@ -19,16 +19,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/gnewsapi
+      # - name: Build the Docker image
+      #   run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/gnewsapi
 
-      - name: Docker Push
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/gnewsapi
+      # - name: Docker Push
+      #   run: docker push ${{ secrets.DOCKER_USERNAME }}/gnewsapi
       
       - name: Create PEM file from secret
 
         run: |
-          sudo apt-get update
+          
           mkdir -p ~/.ssh/
           echo "${{secrets.EC2_SSH}}" > ~/.ssh/server.pem
           chmod 400 ~/.ssh/server.pem
@@ -36,7 +36,9 @@ jobs:
       - name: connect to EC2
         run: |
           ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}}
+          sudo apt-get update
           ls
           pwd
+          docker-compose up --build
 
 
