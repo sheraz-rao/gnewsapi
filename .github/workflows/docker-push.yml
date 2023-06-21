@@ -36,8 +36,8 @@ jobs:
         run: |
           ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} << 'EOF'
           sudo apt-get update 
-          docker-compose pull ${{ secrets.DOCKER_USERNAME }}/gnewsapi
-          docker-compose up -d
+          docker pull ${{ secrets.DOCKER_USERNAME }}/gnewsapi
+          docker run up -d
           EOF
 
 
