@@ -29,10 +29,10 @@ jobs:
       #     docker build -t ${{ secrets.DOCKER_USERNAME }}/redis_service -f ./redis/Dockerfile .
       #     docker push ${{ secrets.DOCKER_USERNAME }}/redis_service
 
-      - name: Build and Push the "nginx" Docker image
-        run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx -f ./nginx/Dockerfile .
-          docker push ${{ secrets.DOCKER_USERNAME }}/nginx
+      # - name: Build and Push the "nginx" Docker image
+      #   run: |
+      #     docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx -f ./nginx/Dockerfile .
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/nginx
       
       - name: Create PEM file from secret
         run: |
@@ -46,9 +46,7 @@ jobs:
             sudo apt-get update
             sudo docker system prune -af
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/web_service
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/nginx
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/redis_service
+            
             sudo docker run ${{ secrets.DOCKER_USERNAME }}/web_service
-            sudo docker run ${{ secrets.DOCKER_USERNAME }}/redis_service
-            sudo docker run ${{ secrets.DOCKER_USERNAME }}/nginx
+            
           EOF
