@@ -20,13 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = 'django-insecure-f#th6h368zfzv(lw2%m4kw=e28o(3qb1pdn_bby#zhf$%y%7g_'
 
-DEBUG = int(os.environ.get("DEBUG", default=0))
+DEBUG = True
 
 # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -137,5 +137,5 @@ STATIC_ROOT = '/code/static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-GNEWS_API_KEY = os.environ.get("GNEWS_API_KEY")
-GNEWS_API = os.environ.get("GNEWS_API")
+GNEWS_API_KEY = "dca25b3376d9ccf73960a0124ab888cd"
+GNEWS_API = "https://gnews.io/api/v4/"
