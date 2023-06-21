@@ -35,9 +35,9 @@ jobs:
       - name: connect to EC2
         run: |
           ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} << 'EOF'
-          cd /home/ubuntu/gnewsapi
-          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/gnewsapi
-          sudo docker run ${{ secrets.DOCKER_USERNAME }}/gnewsapi
+          sudo apt-get update 
+          docker-compose pull ${{ secrets.DOCKER_USERNAME }}/gnewsapi
+          docker-compose up -d
           EOF
 
 
