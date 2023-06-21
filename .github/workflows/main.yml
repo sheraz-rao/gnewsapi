@@ -26,12 +26,12 @@ jobs:
 
       - name: Build and Push the "nginx" Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx_service -f ./nginx/Dockerfile .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx_service -f /nginx/Dockerfile .
           docker push ${{ secrets.DOCKER_USERNAME }}/nginx_service
 
       - name: Build and Push the "redis" Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/redis_service -f ./redis/Dockerfile .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/redis_service -f /redis/Dockerfile .
           docker push ${{ secrets.DOCKER_USERNAME }}/redis_service
       
       - name: Create PEM file from secret
