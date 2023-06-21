@@ -22,7 +22,7 @@ jobs:
       - name: Build and Push the "web" Docker image
         run: |
           docker-compose build web
-          docker-compose push web
+          docker-compose push ${{ secrets.DOCKER_USERNAME }}/google_news
       
       # - name: Build and Push the "redis" Docker image
       #   run: |
