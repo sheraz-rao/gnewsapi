@@ -21,8 +21,8 @@ jobs:
 
       - name: Build and Push the "web" Docker image
         run: |
-          docker-compose build -t ${{ secrets.DOCKER_USERNAME }}/web_service
-          docker-compose push ${{ secrets.DOCKER_USERNAME }}/web_service
+          docker-compose build web
+          docker-compose push web
       
       # - name: Build and Push the "redis" Docker image
       #   run: |
