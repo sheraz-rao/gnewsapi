@@ -43,9 +43,12 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }} << 'EOF'
-            sudo apt-get update 
+            sudo apt-get update
+            sudo docker system prune -af
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/web_service
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/nginx
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/redis_service
-            sudo docker-compose up -d
+            sudo docker run ${{ secrets.DOCKER_USERNAME }}/web_service
+            sudo docker run ${{ secrets.DOCKER_USERNAME }}/redis_service
+            sudo docker run ${{ secrets.DOCKER_USERNAME }}/nginx
           EOF
