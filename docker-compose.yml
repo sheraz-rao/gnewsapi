@@ -14,8 +14,8 @@ services:
       - "8000:8000"
     expose:
       - "8000"
-    env_file:
-      - ./.env.dev
+    # env_file:
+    #   - ./.env.dev
 
   nginx:
     image: nginx:latest
