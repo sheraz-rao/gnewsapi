@@ -1,6 +1,6 @@
 FROM nginx:latest
 
-RUN cp nginx.conf /etc/nginx/nginx.conf
-RUN cp conf.d/default.conf /etc/nginx/conf.d/default.conf
+WORKDIR /etc/nginx
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY nginx.conf ./nginx.conf
+COPY conf.d/default.conf ./conf.d/default.conf
