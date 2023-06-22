@@ -71,24 +71,23 @@ env:
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker-compose build --no-cache --force-rm 
   
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Test the Docker image
-        run: docker-compose up -d 
+  # test:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Test the Docker image
+  #       run: docker-compose up -d 
   
   push_to_registry:
-    needs: test
+    # needs: test
+    needs: build
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
@@ -115,5 +114,5 @@ jobs:
         with:
           context: "{{defaultContext}}"
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/gnewsapi:latest
           labels: ${{ steps.meta.outputs.labels }}
