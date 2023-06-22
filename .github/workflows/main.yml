@@ -31,7 +31,7 @@ jobs:
 
       - name: Build and Push the "nginx" Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx -f /nginx/Dockerfile .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx -f ./nginx/Dockerfile .
           docker push ${{ secrets.DOCKER_USERNAME }}/nginx
       
       # - name: Create PEM file from secret
