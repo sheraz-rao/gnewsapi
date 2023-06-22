@@ -26,13 +26,13 @@ jobs:
       
       - name: Build and Push the "redis" Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/redis -f ./redis/Dockerfile .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/redis -f /redis/Dockerfile .
           docker push ${{ secrets.DOCKER_USERNAME }}/redis
 
-      # - name: Build and Push the "nginx" Docker image
-      #   run: |
-      #     docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx -f ./nginx/Dockerfile .
-      #     docker push ${{ secrets.DOCKER_USERNAME }}/nginx
+      - name: Build and Push the "nginx" Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx -f /nginx/Dockerfile .
+          docker push ${{ secrets.DOCKER_USERNAME }}/nginx
       
       # - name: Create PEM file from secret
       #   run: |
@@ -45,8 +45,8 @@ jobs:
       #     ssh -T -o StrictHostKeyChecking=no -i ~/.ssh/server.pem ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }} << 'EOF'
       #       sudo apt-get update
       #       sudo docker system prune -af
-      #       sudo docker pull ${{ secrets.DOCKER_USERNAME }}/web_service
-            
-      #       sudo docker run ${{ secrets.DOCKER_USERNAME }}/web_service
-            
+      #       sudo docker pull ${{ secrets.DOCKER_USERNAME }}/web
+      #       sudo docker pull ${{ secrets.DOCKER_USERNAME }}/redis
+      #       sudo docker run ${{ secrets.DOCKER_USERNAME }}/web -d
+      #       sudo docker run ${{ secrets.DOCKER_USERNAME }}/redis -d
       #     EOF
