@@ -1,10 +1,8 @@
-version: '3.3'
-
 services:
   web:
     image: google_news
     build: .
-    command: gunicorn GNewsAPI.wsgi:application --bind 0.0.0.0:8000
+    command: sh -c "python manage.py collectstatic --noinput && gunicorn GNewsAPI.wsgi:application --bind 0.0.0.0:8000"
     container_name: gnews
     restart: always
     volumes:
