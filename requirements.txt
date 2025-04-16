@@ -5,3 +5,4 @@ djangorestframework
 redis
 requests
 gunicorn
+django-cors-headers
